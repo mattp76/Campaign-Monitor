@@ -1,0 +1,105 @@
+﻿@Model System.Web.Mvc.
+
+@{
+    ViewBag.Title = "Hi Campaign Monitor";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+            </hgroup>
+            <p>
+                Please find below my test attempt. I decided to reuse this default VS MVC template for it, I hope that is ok.
+                All answers should be included below, with code and unit tests (using MSTEST) within the solution. 
+                <br/><br/>
+                Afew notes: <br/>
+                >> The JSON requirement is all within the web app. Relevant JS is in /scripts/site.js (plugin used here jsRender.min.js also in scripts) and require-3.html is in /templates/. The require-3.html html file should pop up from the index page.
+                <br/>
+                >> The SQL file can be found in /sql/sql.txt
+            </p>
+        </div>
+    </section>
+}
+<h3>C# Requirements</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Extension method outputs for IsNullOrEmpty.</h5>
+        <p>@ViewBag.checkForNull</p>
+        <p>@ViewBag.checkForStringA</p>
+        <p>@ViewBag.checkForEmptyString</p>
+        <p>@ViewBag.checkForEmptyNullString</p>
+    </li>
+
+    <li class="two">
+        <h5>Return positive divisors for input integers</h5>
+        <p><strong>60:</strong> @ViewBag.divisorsFor60</p>
+        <p><strong>42:</strong> @ViewBag.divisorsFor42</p>
+    </li>
+
+    <li class="three">
+        <h5>Return the area of triangle. Default inputs 3-4-5. To check other results adjust the inputs in the HomeController > Index action</h5>
+        <p>@ViewBag.areaOfTriangle</p>
+    </li>
+
+    <li class="four">
+        <h5>Return most common integers (as a list) from input list</h5>
+        <p>1. @ViewBag.commonIntegers1</p>
+        <p>2. @ViewBag.commonIntegers2</p>
+        <p>3. @ViewBag.commonIntegers3</p>
+    </li>
+
+</ol>
+
+
+<h3>Javascript Requirements</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Extend string objects with StartsWith(...)</h5>
+        <p><div id="startsWith1"></div></p>
+        <p><div id="startsWith2"></div></p>
+        <p><div id="startsWith3"></div></p>
+        <p><div id="startsWith3"></div></p>
+        <p><div id="startsWith4"></div></p>
+        <p><div id="startsWith5"></div></p>
+        <p><div id="startsWith6"></div></p>
+        <p><div id="startsWith7"></div></p>
+        <h5>Extend string objects with EndsWith(...)</h5>
+        <p><div id="endsWith1"></div></p>
+        <p><div id="endsWith2"></div></p>
+        <p><div id="endsWith3"></div></p>
+        <p><div id="endsWith4"></div></p>
+        <p><div id="endsWith5"></div></p>
+        <p><div id="endsWith6"></div></p>
+    </li>
+
+    <li class="two">
+        <h5>Extend with StripHtml()</h5>
+        <p><div id="htmlStr1"></div></p>
+        <p><div id="htmlStr2"></div></p>
+    </li>
+
+    <li class="three">
+        <h5>JQuery Plug in. Anchor elements opening in a new (or same depending on group) window</h5>
+        <p><a class="popup" href="https://www.apple.com/au/ipad/" data-window-group="apple">iPad</a></p>
+        <p><a class="popup" href="https://www.apple.com/au/iphone/" data-window-group="apple">iPhone</a></p>
+        <p><a class="popup" href="http://www.samsung.com/au/galaxy-s6/" data-window-group="samsung">Samsung Gallaxy</a></p>
+        <p><a class="popup" href="https://www.apple.com/au/mac/" data-window-group="apple">Mac</a></p>
+        <p><a class="popup" href="https://www.windowsphone.com/en-us" data-window-group="microsoft">Windows Phone</a></p>
+        <p><a class="popup" href="http://www.htc.com/au/" data-window-group="htc">HTC</a></p>
+    </li>
+
+    <li class="four">
+        <h5>CM JSON Status</h5>
+        <p><a class="popup" href="/Templates/require-3.html">Status page - require-3.html</a></p>
+    </li>
+
+</ol>
+
+<h3>SQL Requirements</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Click below for the SQL.txt file. Alternatively it can found in the root of this web app - /SQL/SQL.txt</h5>
+        <p><a class="popup" href="/sql/sql.txt">SQL.txt</a></p>
+    </li>
+</ol>

@@ -1,0 +1,63 @@
+
+--Just to be absolutely sure here I didnt see any create table scripts to set the tables up? (on MSSQLserver 2014) to ensure the 
+--queries were valid and returning the correct data. So I hand wrote what I thought was correct just by looking at the PDF. 
+
+Requirement 9
+
+First answer:
+select a.Name from SalesPerson as a
+ Inner Join [Order] as b on b.SalesPersonID = a.SalesPersonID
+ Inner Join Customer as c on c.CustomerID =  b.CustomerID
+Where c.Name = 'George'
+
+
+Second answer:
+select a.Name from SalesPerson as a
+ Inner Join [Order] as b on b.SalesPersonID = a.SalesPersonID
+ Inner Join Customer as c on c.CustomerID =  b.CustomerID
+Where c.Name != 'George'
+
+
+Third answer:
+select a.Name from SalesPerson as a
+ Inner Join [Order] as b on b.SalesPersonID = a.SalesPersonID
+ Inner Join Customer as c on c.CustomerID =  b.CustomerID
+group by a.Name
+having count (a.Name) >= 2
+
+
+
+Requirement 10
+
+First answer:
+SELECT
+    TOP 1 Salary
+FROM
+    (SELECT DISTINCT TOP 3 salary FROM SalesPerson ORDER BY salary DESC) a ORDER BY salary
+
+
+Second answer:
+--I have to be honest and say I have not worked with Roll-Up SQL tables before. I do know that they provide summary data and there is a 
+--handy command 'WITH ROLLUP' for summarizing but this appends data to the existing table and doesnt create a new table, so wasnt sure if this was required.
+--Having googled around for the some answers and pointers I wasnt able to work out exactly what kind of table is required here
+--I basically set up a standard table using create table and the insert script to add some data. Of course if/where I went wrong here
+--I would like to know the full and correct answer
+
+CREATE TABLE BigOrders
+(
+	CustomerID int,
+	TotalOrderValue varchar(255)
+)
+
+Insert into BigOrders
+	Select CustomerID, SUM(CostOfUnit * NumberOfUnits) as TotalOrderValue
+	From Orders
+	Where TotalOrderValue > 1000
+	Group By CustomerID
+
+
+Third answer:
+	SELECT year(OrderDate) as 'year', month(OrderDate) as 'month', sum(CostOfUnit * NumberOfUnits) as TotalAmount
+	FROM Orders
+	GROUP BY month(OrderDate), year(OrderDate)
+	ORDER BY year(OrderDate) desc, month(OrderDate) desc

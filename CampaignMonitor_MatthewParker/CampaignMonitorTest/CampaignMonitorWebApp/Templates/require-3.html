@@ -1,0 +1,76 @@
+<!--I have jsRender for my work here. The plugin is included in the scripts folder-->
+<!--I found useful resources to assist on stackoverflow and http://www.jsviews.com/ -->
+<!--I hope JS templating in this way is acceptable for the task. Your status API page didnt have any issues / data-->
+<!--I was going to include a check for this but decided only to work with the test.json file included-->
+
+<script type="text/javascript" src="/Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/Scripts/jsrender.min.js"></script>
+<script type="text/javascript" src="/Scripts/site.js?v=1"></script>
+
+<html>
+    <head>
+        <title>CM JS dev, requirement 8</title>
+        <link href="/Css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container" style="padding-top:30px">
+            <div>
+                <p><a class="loadlist" href="#">Load the current issues list</a></p>
+            </div>
+            <div id="results" style="display:none">
+                <!-- Each issue should be rendered with the following template -->
+                <div class="issue-template" id="template-container"></div>
+            </div>
+        </div>
+    </body> 
+</html>
+
+<!--For some assistance with the syntax I looked at http://www.jsviews.com/. I also downloaded the jsRender plugin from here -->
+<script id="theIssueTmpl" type="text/x-jsrender">
+    {{if issue != ''}}
+        {{if status == 'Resolved'}}
+            <h3>Issue Title - Resolved 10 minutes ago</h3>
+        {{else}}
+            <h3>Issue Title - Begin 10 minutes ago</h3>
+        {{/if}}
+
+        <p>Issue id: {{:id}}</p>
+        <p><b>{{:title}}</b></p>
+        <p><u>Issue description</u></p>
+        <p>{{:description}}</p>
+        <div style="padding-left:50px">
+            <p>Updates:</p>
+            <!-- Each update should be rendered with the following template -->
+            <!-- Here I am appling update template as a sub template for issue template -->
+            <div class="update-template">
+                {{for updates tmpl='#theUpdateTmpl'/}}
+            </div>
+        </div>
+        <hr />
+    {{else}}
+        {{include tmpl='#theNoIssueTmpl'/}}
+    {{/if}}
+</script>
+
+
+<script id="theUpdateTmpl" type="text/x-jsrender">
+    <p>Update</p>
+    <p><img width="30" height="30" src="{{>avatar}}" /></p>
+    <p>{{>update}}</p>
+    <em>By {{>by}} 10 minutes ago</em>
+    <hr style="width:50%" />
+</script>
+
+<script id="theNoIssueTmpl" type="text/x-jsrender">
+        Everybody is happy!
+</script>
+
+
+
+
+
+
+
+
+
+
